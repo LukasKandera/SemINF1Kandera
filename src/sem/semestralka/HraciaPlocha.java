@@ -23,18 +23,56 @@ public class HraciaPlocha {
                 this.plocha[i][j] = 0;
             }
         }
-        for (int i = 0; i < this.pocetMine; i++) {
-            Random rand = new Random();
+        this.nacitajMiny();
+        this.nacitajCisla();
+        this.textVypisPlochy();
+    }
 
+    public void textVypisPlochy() {
+        for (int i = 0; i < this.xMax; i++) {
+            for (int j = 0; j < this.yMax; j++) {
+                System.out.print(this.plocha[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void nacitajCisla() {
+        for (int i = 0; i < this.xMax; i++) {
+            for (int j = 0; j < this.yMax; j++) {
+                //kontrola okolia
+                int pMinVOkoli = 0;
+            }
+        }
+    }
+
+    public void nacitajMiny() {
+        for (int i = 0; i < this.pocetMine; i++) {
+            //generovanie suradnic miny
+            Random rand = new Random();
             int x = rand.nextInt(this.xMax);
             int y = rand.nextInt(this.yMax);
             this.miny[i] = new Mina(i, x, y);
-            //kontrola
 
+            //kontrola kolizii
+            while (this.kontrolaKolizii(i)) {
+                x = rand.nextInt(this.xMax);
+                y = rand.nextInt(this.yMax);
+                this.miny[i].setPozX(x);
+                this.miny[i].setPozY(y);
+            }
 
             this.plocha[x][y] = 9;
         }
+    }
 
+    public boolean kontrolaKolizii(int i) {
+        for (int j = i - 1; j >= 0; j--) {
+            if ((this.miny[i].getPozX() == this.miny[j].getPozX()) && (this.miny[i].getPozY() == this.miny[j].getPozY())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getxMax() {
