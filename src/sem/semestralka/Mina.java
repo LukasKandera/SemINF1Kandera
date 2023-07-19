@@ -4,13 +4,11 @@ public class Mina {
     private int id;
     private int pozX;
     private int pozY;
-    private boolean odkryta;
 
     public Mina(int id, int pozX, int pozY) {
         this.id = id;
         this.pozX = pozX;
         this.pozY = pozY;
-        this.odkryta = false;
     }
 
     public int getId() {

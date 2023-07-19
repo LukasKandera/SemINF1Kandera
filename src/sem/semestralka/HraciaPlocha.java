@@ -42,6 +42,19 @@ public class HraciaPlocha {
             for (int j = 0; j < this.yMax; j++) {
                 //kontrola okolia
                 int pMinVOkoli = 0;
+                if (this.plocha[i][j] != 9) {
+
+                    for (int k = -1; k < 2; k++) {
+                        for (int q = -1; q < 2; q++) {
+                            if (((i + k) >= 0) && ((j + q) >= 0) && ((i + k) < xMax) && ((j + q) < yMax)) {
+                                if (this.plocha[i + k][j + q] == 9) {
+                                    pMinVOkoli++;
+                                }
+                            }
+                        }
+                    }
+                    this.plocha[i][j] = pMinVOkoli;
+                }
             }
         }
     }

@@ -3,6 +3,6 @@ package sem.semestralka;
 public class Main {
 
     public static void main(String[] args) {
-	System.out.println("Servus");
+	Hra hra = new Hra(9,9,10);
     }
 }
